@@ -1,40 +1,46 @@
 <%@ page import="cg.wbd.grandemonstration.service.CustomerService" %>
 <%@ page import="cg.wbd.grandemonstration.service.CustomerServiceFactory" %>
 <%@ page import="cg.wbd.grandemonstration.model.Customer" %>
-<%!
-    private CustomerService customerService = CustomerServiceFactory.getInstance();
-%>
-<%
-    Long id = Long.valueOf(request.getParameter("id"));
-    Customer customer = customerService.findOne(id);
-%>
+<%--<%!--%>
+<%--    private CustomerService customerService = CustomerServiceFactory.getInstance();--%>
+<%--%>--%>
+<%--<%--%>
+<%--    Long id = Long.valueOf(request.getParameter("id"));--%>
+<%--    Customer customer = customerService.findOne(id);--%>
+<%--%>--%>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Information</title>
+</head>
+<body>
 <form action="/customers" method="post">
 <fieldset>
     <legend>Customer Information</legend>
-    <input type="hidden" name="id" value="<%= customer.getId() %>">
+    <input type="hidden" name="id" th:value="${customer.id}">
     <table>
         <tr>
             <td>Id</td>
-            <td>
-                <%= customer.getId() %>
+            <td th:text=${customer.id}>
             </td>
         </tr>
         <tr>
             <td>Name</td>
             <td>
-                <input type="text" name="name" value="<%= customer.getName() %>">
+                <input type="text" name="name" th:value="${customer.name}">
             </td>
         </tr>
         <tr>
             <td>Email</td>
             <td>
-                <input type="text" name="email" value="<%= customer.getEmail() %>">
+                <input type="text" name="email" th:value="${customer.email}">
             </td>
         </tr>
         <tr>
             <td>Address</td>
             <td>
-                <input type="text" name="address" value="<%= customer.getAddress() %>">
+                <input type="text" name="address" th:value="${customer.address}">
             </td>
         </tr>
         <tr>
@@ -46,3 +52,4 @@
 </fieldset>
 </form>
 <a href="/customers">Back to list</a>.
+</body>

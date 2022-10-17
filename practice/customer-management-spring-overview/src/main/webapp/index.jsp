@@ -12,6 +12,6 @@
 </head>
 <body>
 <p>hello</p>
-<a href="customers/list.jsp"><p>LIST</p></a>
+<a href="customers"><p>LIST</p></a>
 </body>
 </html>
