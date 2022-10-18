@@ -11,7 +11,7 @@
     </a>
 </p>
 <div id="form">
-    <!--    th:action chỉ ra đường dẫn sẽ xử lý submit form, ${customer} ở th:object chính là biến customer.-->
+    <!--    th:action chỉ ra đường dẫn sẽ xử lý submit form, ${product} ở th:object chính là biến product.-->
     <form th:action="@{/product/save}" th:object="${product}"
           method="POST" novalidate="novalidate">
         <input type="hidden" th:field="*{id}"/>

@@ -7,10 +7,7 @@ import com.service.ProductService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -61,6 +58,12 @@ public class ProductController {
     @GetMapping("/{id}/view")
     public String view(@PathVariable int id, Model model) {
         model.addAttribute("product", productService.findByID(id));
+        return "/views";
+    }
+    @GetMapping("/search")
+    public String search(@RequestParam("keyword") String keyword, Model model){
+        model.addAttribute("product",productService.search(keyword));
+        model.addAttribute("keyword", keyword);
         return "/views";
     }
 }

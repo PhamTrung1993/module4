@@ -2,10 +2,7 @@ package com.service;
 
 import com.model.Product;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ProductService implements IProductService{
     private static final Map<Integer, Product> products;
@@ -40,5 +37,17 @@ public class ProductService implements IProductService{
     @Override
     public void save(Product product) {
         products.put(product.getId(), product);
+    }
+    public Product search(String name) {
+        Iterator<Product> iterator = products.values().iterator();
+        Product product = new Product();
+        while(iterator.hasNext()) {
+            Product holder = iterator.next();
+            if (Objects.equals(holder.getName(),name)) {
+                product = holder;
+                break;
+            }
+        }
+        return product;
     }
 }

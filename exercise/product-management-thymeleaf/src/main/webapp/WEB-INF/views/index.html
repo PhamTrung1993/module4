@@ -4,18 +4,25 @@
 
 </head>
 <body>
+
 <h3>Customers</h3>
+<form th:action="@{/product/search}">
+    <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+    &nbsp;
+    <input type="submit" value="Search" />
+</form>
 <p>
-    <a th:href="@{/customer/create}">
+    <a th:href="@{/product/create}">
         Add New Customer
     </a>
 </p>
+
 <div class="notify">
     <div th:if="${success}">
         <span th:text="${success}"></span>
     </div>
 </div>
-<table id="customers">
+<table id="products">
     <thead>
     <tr>
         <th>Name</th>
